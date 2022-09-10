@@ -1,12 +1,16 @@
 import express from "express";
-import readRouter from "./routers/readRouter.js";
-import writeRouter from "./routers/writeRouter.js";
+import dbConnection from "./dbConnection.js";
+import diariesRouter from "./routers/diariesRouter.js";
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/api/read", readRouter);
-app.use("/api/write", writeRouter);
+app.get("/index", async (req, res) => {
+  const client = dbConnection();
+  res.json("Welcome to my applications.");
+});
+
+app.use("/diaries", diariesRouter);
 
 export default app;

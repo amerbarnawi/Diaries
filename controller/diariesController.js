@@ -1,9 +1,13 @@
 import { ObjectId } from "mongodb";
 import dbConnection from "../dbConnection.js";
 
-// Creating a diary function:
+// Creating diary function:
 export async function createDiary(req, res) {
   const { title, body } = req.body;
+
+  if (!title || !body) {
+    res.json("Please, send all data to create a new diary!");
+  }
 
   try {
     async function writeData(diaryCollection) {
@@ -22,7 +26,24 @@ export async function createDiary(req, res) {
   }
 }
 
-// Finding a diary by id:
+// Deleting diary function:
+export async function deleteDiary(req, res) {
+  const id = req.params.id;
+
+  try {
+    async function deleteData(diaryCollection) {
+      await diaryCollection.deleteOne({ _id: ObjectId(id) });
+
+      res.json("Deleting the diary is done!");
+    }
+
+    await dbConnection(deleteData);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Finding diary by id:
 export async function readDiary(req, res) {
   const id = req.params.id;
 
@@ -30,7 +51,11 @@ export async function readDiary(req, res) {
     async function readData(diaryCollection) {
       const result = await diaryCollection.findOne({ _id: ObjectId(id) });
 
-      res.send(result);
+      if (result) {
+        res.json(result);
+      } else {
+        res.json("Sorry, can not find diaries by this id!");
+      }
     }
     await dbConnection(readData);
   } catch (error) {
@@ -38,7 +63,7 @@ export async function readDiary(req, res) {
   }
 }
 
-// Updating a diary:
+// Updating diary function:
 export async function updateDiary(req, res) {
   const { title, body } = req.body;
   const id = req.params.id;
@@ -59,24 +84,7 @@ export async function updateDiary(req, res) {
   }
 }
 
-// Deleting a diary function:
-export async function deleteDiary(req, res) {
-  const id = req.params.id;
-
-  try {
-    async function deleteData(diaryCollection) {
-      await diaryCollection.deleteOne({ _id: ObjectId(id) });
-
-      res.json("Deleting the diary is done!");
-    }
-
-    await dbConnection(deleteData);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// Finding a diary by title query:
+// Finding diary by title:
 export async function queryByTitle(req, res) {
   const title = req.query.title;
 
@@ -102,7 +110,11 @@ export async function queryByTitle(req, res) {
 
       const aggResult = await aggCursor.toArray();
 
-      res.json(aggResult);
+      if (aggResult.length >= 1) {
+        res.json(aggResult);
+      } else {
+        res.json("Sorry, can not find any diary by this title!");
+      }
     }
     await dbConnection(readData);
   } catch (error) {
@@ -110,7 +122,7 @@ export async function queryByTitle(req, res) {
   }
 }
 
-// Finding a diary by month:
+// Finding diary by date:
 export async function queryByDate(req, res) {
   const { year, month, day } = req.query;
   let startDate = "";
@@ -148,7 +160,11 @@ export async function queryByDate(req, res) {
 
       const aggResult = await aggCursor.toArray();
 
-      res.json(aggResult);
+      if (aggResult.length >= 1) {
+        res.json(aggResult);
+      } else {
+        res.json("Sorry, can not find diaries by this date!");
+      }
     }
     await dbConnection(readData);
   } catch (error) {

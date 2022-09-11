@@ -7,27 +7,28 @@ import {
   readDiary,
   updateDiary,
 } from "../controller/diariesController.js";
+import { isDiaryAvailable } from "../helper/middleware.js";
 
 const diariesRouter = express.Router();
 
 diariesRouter.use(express.urlencoded({ extended: false }));
 
-// Create a diary:
+// Create diary:
 diariesRouter.post("/", createDiary);
 
-// Reading a diary by title query:
+// Finding diary by title:
 diariesRouter.get("/title", queryByTitle);
 
-// Finding a diary by year:
+// Finding diary by date:
 diariesRouter.get("/date", queryByDate);
 
-// Read a diary by id:
+// Find diary by id:
 diariesRouter.get("/:id", readDiary);
 
-// Update a diary:
-diariesRouter.put("/:id", updateDiary);
+// Update diary:
+diariesRouter.put("/:id", isDiaryAvailable, updateDiary);
 
-// Delete a diary:
-diariesRouter.delete("/:id", deleteDiary);
+// Delete diary:
+diariesRouter.delete("/:id", isDiaryAvailable, deleteDiary);
 
 export default diariesRouter;

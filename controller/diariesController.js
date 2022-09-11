@@ -76,7 +76,8 @@ export async function deleteDiary(req, res) {
   }
 }
 
-export async function readDiaryByTitleQuery(req, res) {
+// Finding a diary by title query:
+export async function queryByTitle(req, res) {
   const title = req.query.title;
 
   try {
@@ -106,5 +107,51 @@ export async function readDiaryByTitleQuery(req, res) {
     await dbConnection(readData);
   } catch (error) {
     console.log(error);
+  }
+}
+
+// Finding a diary by month:
+export async function queryByDate(req, res) {
+  const { year, month, day } = req.query;
+  let startDate = "";
+  let endDate = "";
+
+  if (year && !month && !day) {
+    startDate = (+year - 1).toString();
+    endDate = (+year + 1).toString();
+  } else if (year && month && !day) {
+    startDate = `${year}-${month}-01`;
+    endDate = `${year}-${month}-31`;
+  } else if (year && month && day) {
+    startDate = `${year}-${month}-${+day}`;
+    endDate = `${year}-${month}-${+day + 1}`;
+  }
+  try {
+    async function readData(diaryCollection) {
+      const pipeline = [
+        {
+          $match: {
+            date: {
+              $gt: new Date(`${startDate}`),
+              $lt: new Date(`${endDate}`),
+            },
+          },
+        },
+        {
+          $sort: {
+            date: -1,
+          },
+        },
+      ];
+
+      const aggCursor = diaryCollection.aggregate(pipeline);
+
+      const aggResult = await aggCursor.toArray();
+
+      res.json(aggResult);
+    }
+    await dbConnection(readData);
+  } catch (error) {
+    throw new error(error);
   }
 }

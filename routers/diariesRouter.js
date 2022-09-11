@@ -2,8 +2,9 @@ import express from "express";
 import {
   createDiary,
   deleteDiary,
+  queryByDate,
+  queryByTitle,
   readDiary,
-  readDiaryByTitleQuery,
   updateDiary,
 } from "../controller/diariesController.js";
 
@@ -14,6 +15,12 @@ diariesRouter.use(express.urlencoded({ extended: false }));
 // Create a diary:
 diariesRouter.post("/", createDiary);
 
+// Reading a diary by title query:
+diariesRouter.get("/title", queryByTitle);
+
+// Finding a diary by year:
+diariesRouter.get("/date", queryByDate);
+
 // Read a diary by id:
 diariesRouter.get("/:id", readDiary);
 
@@ -22,8 +29,5 @@ diariesRouter.put("/:id", updateDiary);
 
 // Delete a diary:
 diariesRouter.delete("/:id", deleteDiary);
-
-// Reading a diary by query:
-diariesRouter.get("/", readDiaryByTitleQuery);
 
 export default diariesRouter;

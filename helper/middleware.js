@@ -9,7 +9,9 @@ export async function isDiaryAvailable(req, res, next) {
       const result = await diaryCollection.findOne({ _id: ObjectId(id) });
 
       if (!result) {
-        res.json("Sorry, can not find diary by this id!");
+        res
+          .status(400)
+          .json({ message: "Sorry, can not find diary by this id!" });
       } else {
         next();
       }

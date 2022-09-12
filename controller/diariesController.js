@@ -6,7 +6,10 @@ export async function createDiary(req, res) {
   const { title, body } = req.body;
 
   if (!title || !body) {
-    res.json("Please, send all data to create a new diary!");
+    res
+      .status(400)
+      .json({ message: "Please, send all data to create a new diary!" });
+    return;
   }
 
   try {
@@ -20,7 +23,7 @@ export async function createDiary(req, res) {
 
     await dbConnection(writeData);
 
-    res.json("Creating the diary is done!");
+    res.status(201).json({ message: "Creating the diary is done!" });
   } catch (error) {
     console.log(error);
   }
@@ -34,7 +37,7 @@ export async function deleteDiary(req, res) {
     async function deleteData(diaryCollection) {
       await diaryCollection.deleteOne({ _id: ObjectId(id) });
 
-      res.json("Deleting the diary is done!");
+      res.status(200).json({ message: "Deleting the diary is done!" });
     }
 
     await dbConnection(deleteData);
@@ -52,9 +55,11 @@ export async function readDiary(req, res) {
       const result = await diaryCollection.findOne({ _id: ObjectId(id) });
 
       if (result) {
-        res.json(result);
+        res.status(200).json(result);
       } else {
-        res.json("Sorry, can not find diaries by this id!");
+        res
+          .status(404)
+          .json({ message: "Sorry, can not find diaries by this id!" });
       }
     }
     await dbConnection(readData);
@@ -75,7 +80,7 @@ export async function updateDiary(req, res) {
         { $set: { title: title, body: body } }
       );
 
-      res.json("Updating the diary is done!");
+      res.status(201).json({ message: "Updating the diary is done!" });
     }
 
     await dbConnection(updateData);
@@ -113,7 +118,9 @@ export async function queryByTitle(req, res) {
       if (aggResult.length >= 1) {
         res.json(aggResult);
       } else {
-        res.json("Sorry, can not find any diary by this title!");
+        res
+          .status(404)
+          .json({ message: "Sorry, can not find any diary by this title!" });
       }
     }
     await dbConnection(readData);
@@ -128,7 +135,10 @@ export async function queryByDate(req, res) {
   let startDate = "";
   let endDate = "";
 
-  if (year && !month && !day) {
+  if (!year && !month && !day) {
+    res.status(400).json({ message: "Please, choose date!" });
+    return;
+  } else if (year && !month && !day) {
     startDate = (+year - 1).toString();
     endDate = (+year + 1).toString();
   } else if (year && month && !day) {
@@ -163,7 +173,9 @@ export async function queryByDate(req, res) {
       if (aggResult.length >= 1) {
         res.json(aggResult);
       } else {
-        res.json("Sorry, can not find diaries by this date!");
+        res
+          .status(400)
+          .json({ message: "Sorry, can not find diaries by this date!" });
       }
     }
     await dbConnection(readData);

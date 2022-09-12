@@ -1,16 +1,15 @@
 import express from "express";
-import dbConnection from "./dbConnection.js";
 import diariesRouter from "./routers/diariesRouter.js";
+import viewRouter from "./routers/viewRouter.js";
 
 const app = express();
 
+app.set("view engine", "ejs");
+
+app.use(express.static("public"));
 app.use(express.json());
 
-app.get("/index", async (req, res) => {
-  const client = dbConnection();
-  res.json("Welcome to my applications.");
-});
-
-app.use("/diaries", diariesRouter);
+app.use("/", viewRouter);
+app.use("/api/diaries", diariesRouter);
 
 export default app;

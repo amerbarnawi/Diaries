@@ -7,6 +7,7 @@ import {
   SEARCH_BY_DATE_BUTTON_ID,
   SEARCH_BY_TITLE_BUTTON_ID,
   SEARCH_INPUT_ID,
+  RESULT_CARD_CLASS,
 } from "../../constant.js";
 
 export function createSearchPageElements() {
@@ -14,22 +15,22 @@ export function createSearchPageElements() {
     
         <h2>Search for your diary:</h2>
         <br>
-        <div>
+        <form>
             <p>Choose date:</p>
-            <p>Year:</p>
+            <label>Year:</label>
             <select name="year" id= ${YEAR_SELECT_ID}>
                 <option value="" selected disabled hidden>Year</option>
             </select>
-            <p>Month:</p>
+            <label>Month:</label>
             <select name="month" id=${MONTH_SELECT_ID}>
                 <option value = "" selected disabled hidden>Month</option>
             </select>
-            <p>Day:</p>
+            <label>Day:</label>
             <select name="day" id= ${DAY_SELECT_ID}>
                 <option value = "" selected disabled hidden>Day</option>
             </select>
+        </form>
             <button id = ${SEARCH_BY_DATE_BUTTON_ID}>Search</button>
-        </div>
 
         <br>
 
@@ -46,4 +47,17 @@ export function createSearchPageElements() {
     `;
 
   return searchElements;
+}
+
+export function createSearchResultCard(title, date) {
+  const resultCardDiv = document.createElement("div");
+  resultCardDiv.classList = RESULT_CARD_CLASS;
+  resultCardDiv.innerHTML = String.raw`
+
+        <hr>
+        <h3>${title}</h3>
+        <p>${date}</p>
+        <hr>
+    `;
+  return resultCardDiv;
 }

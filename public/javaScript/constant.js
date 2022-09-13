@@ -20,3 +20,8 @@ export const SEARCH_RESULT_ID = "search-result-div";
 export const SEARCH_BY_DATE_BUTTON_ID = "search-by-date-button";
 export const SEARCH_BY_TITLE_BUTTON_ID = "search-by-title-button";
 export const SEARCH_INPUT_ID = "search-input";
+export const RESULT_CARD_CLASS = "result-card";
+
+export const DIARY_TITLE_ID = "diary-title";
+export const DIARY_BODY_ID = "diary-body";
+export const RETURN_TO_SEARCH_BUTTON_ID = "return-to-search-button";

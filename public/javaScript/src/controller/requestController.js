@@ -3,6 +3,7 @@ import {
   SEARCH_RESULT_ID,
 } from "../../constant.js";
 import { fetchData } from "../fetchData/fetchData.js";
+import { renderSearchResult } from "./renderData.js";
 
 export async function createDiaryByPostRequest(diary) {
   const url = "http://localhost:3000/api/diaries";
@@ -33,7 +34,7 @@ export async function getDiaries(url) {
     if (response.message) {
       searchResultDiv.innerHTML = String.raw`<h3>${response.message}</h3>`;
     } else {
-      console.log(response);
+      renderSearchResult(response);
     }
   } catch (error) {
     searchResultDiv.innerHTML = String.raw`<h3>${error}</h3>`;

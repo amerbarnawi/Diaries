@@ -135,13 +135,15 @@ export async function queryByDate(req, res) {
   let startDate = "";
   let endDate = "";
 
-  if (!year && !month && !day) {
+  console.log(year, typeof month, day);
+
+  if (+year === 0 && +month === 0 && +day === 0) {
     res.status(400).json({ message: "Please, choose date!" });
     return;
-  } else if (year && !month && !day) {
+  } else if (year && +month === 0 && +day === 0) {
     startDate = (+year - 1).toString();
     endDate = (+year + 1).toString();
-  } else if (year && month && !day) {
+  } else if (year && month && +day === 0) {
     startDate = `${year}-${month}-01`;
     endDate = `${year}-${month}-31`;
   } else if (year && month && day) {

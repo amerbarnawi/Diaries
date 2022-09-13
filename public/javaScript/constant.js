@@ -16,3 +16,7 @@ export const CREATE_NEW_DIARY_MESSAGE_ID = "create-new-diary-message";
 export const YEAR_SELECT_ID = "year-select";
 export const MONTH_SELECT_ID = "month-select";
 export const DAY_SELECT_ID = "day-select";
+export const SEARCH_RESULT_ID = "search-result-div";
+export const SEARCH_BY_DATE_BUTTON_ID = "search-by-date-button";
+export const SEARCH_BY_TITLE_BUTTON_ID = "search-by-title-button";
+export const SEARCH_INPUT_ID = "search-input";

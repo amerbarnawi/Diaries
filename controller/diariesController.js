@@ -73,6 +73,10 @@ export async function updateDiary(req, res) {
   const { title, body } = req.body;
   const id = req.params.id;
 
+  if (!title || !body) {
+    res.status(400).json({ message: "Please, send the title and the body." });
+  }
+
   try {
     async function updateData(diaryCollection) {
       await diaryCollection.updateOne(

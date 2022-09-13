@@ -17,7 +17,7 @@ export function createDiaryElements() {
             <input id = ${CREATE_TITLE_ID} type="text" name="title" placeholder="Diary title" required />
             <br>
             <label>My diary body:</label>
-            <input ID = ${CREATE_BODY_ID} type="text" name="body" placeholder="Diary body" required />
+            <textarea ID = ${CREATE_BODY_ID}  placeholder="Diary body" rows="4" cols="50"></textarea>
             <br>
         </form>
 

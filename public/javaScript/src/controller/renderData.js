@@ -23,14 +23,14 @@ export function renderSearchResult(results) {
   searchResultDiv.innerHTML = "";
 
   results.forEach((result) => {
-    const { title, date, body } = result;
+    const { title, date, body, _id } = result;
 
     const resultCard = createSearchResultCard(title, date);
 
     searchResultDiv.appendChild(resultCard);
 
     resultCard.addEventListener("click", () => {
-      initDiaryPage(title, body, date);
+      initDiaryPage(result);
     });
   });
 }

@@ -1,9 +1,11 @@
 import {
+  CONFIRM_DELETION_BUTTON_ID,
   DELETE_BUTTON_ID,
   INTERFACE_ID,
   RETURN_TO_SEARCH_BUTTON_ID,
   UPDATE_BUTTON_ID,
 } from "../../constant.js";
+import { confirmDeletion } from "../controller/renderData.js";
 import { deleteDiary } from "../controller/requestController.js";
 import { createDiaryElements } from "../views/diaryView.js";
 import { initSearchPage } from "./searchPage.js";
@@ -17,9 +19,13 @@ export function initDiaryPage(diaryDetails) {
   userInterface.innerHTML = createDiaryElements(diaryDetails);
 
   const deleteButton = document.getElementById(DELETE_BUTTON_ID);
-  deleteButton.addEventListener("click", async () => {
-    const url = `http://localhost:3000/api/diaries/${_id}`;
-    await deleteDiary(url);
+  deleteButton.addEventListener("click", () => {
+    confirmDeletion();
+    const confirmButton = document.getElementById(CONFIRM_DELETION_BUTTON_ID);
+    confirmButton.addEventListener("click", async () => {
+      const url = `http://localhost:3000/api/diaries/${_id}`;
+      await deleteDiary(url);
+    });
   });
 
   const updateButton = document.getElementById(UPDATE_BUTTON_ID);

@@ -1,4 +1,8 @@
-import { SEARCH_RESULT_ID } from "../../constant.js";
+import {
+  DELETE_UPDATE_MESSAGE_ID,
+  SEARCH_RESULT_ID,
+  CONFIRM_DELETION_BUTTON_ID,
+} from "../../constant.js";
 import { initDiaryPage } from "../pages/diaryPage.js";
 import { createSearchResultCard } from "../views/searchView.js";
 
@@ -33,4 +37,14 @@ export function renderSearchResult(results) {
       initDiaryPage(result);
     });
   });
+}
+
+export function confirmDeletion() {
+  const diaryPageMessage = document.getElementById(DELETE_UPDATE_MESSAGE_ID);
+
+  diaryPageMessage.innerHTML = String.raw`
+  
+    <h3>Click on "Confirm" to delete this diary </h3>
+    <button id = ${CONFIRM_DELETION_BUTTON_ID}>Confirm</button>
+  `;
 }

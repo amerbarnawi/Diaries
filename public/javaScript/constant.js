@@ -34,3 +34,5 @@ export const UPDATE_BODY_ID = "update-body";
 export const UPDATE_DIARY_BUTTON_ID = "update-diary-button";
 export const UPDATE_DIARY_MESSAGE_ID = "update-diary-message";
 export const RETURN_TO_DIARY_BUTTON_ID = "return-to-diary-button";
+
+export const CONFIRM_DELETION_BUTTON_ID = "confirm-deletion-button";

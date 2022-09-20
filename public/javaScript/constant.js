@@ -28,6 +28,7 @@ export const RETURN_TO_SEARCH_BUTTON_ID = "return-to-search-button";
 export const DELETE_BUTTON_ID = "delete-button";
 export const UPDATE_BUTTON_ID = "update-button";
 export const DELETE_UPDATE_MESSAGE_ID = "delete-update-message";
+export const CONFIRM_DELETION_BUTTON_ID = "confirm-deletion-button";
 
 export const UPDATE_TITLE_ID = "update-title";
 export const UPDATE_BODY_ID = "update-body";
@@ -35,4 +36,5 @@ export const UPDATE_DIARY_BUTTON_ID = "update-diary-button";
 export const UPDATE_DIARY_MESSAGE_ID = "update-diary-message";
 export const RETURN_TO_DIARY_BUTTON_ID = "return-to-diary-button";
 
-export const CONFIRM_DELETION_BUTTON_ID = "confirm-deletion-button";
+export const SEARCH_PAGE_BUTTON_ID = "search-page-button";
+export const WELCOME_PAGE_BUTTON_ID = "welcome-page-button";

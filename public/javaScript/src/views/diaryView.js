@@ -18,7 +18,12 @@ export function createDiaryElements(diaryDetails) {
         <div id = ${DELETE_UPDATE_MESSAGE_ID}></div>
         <hr>
         <br>
-        <p id = ${DIARY_BODY_ID}>${body}</p>
+        <div id = ${DIARY_BODY_ID}>
+          <p>${body}</p>
+        </div>
+        <br>
+        <hr>
+        <br>
         <br>
         <button id = ${RETURN_TO_SEARCH_BUTTON_ID}>Return</button>
     `;

@@ -44,7 +44,7 @@ export function confirmDeletion() {
 
   diaryPageMessage.innerHTML = String.raw`
   
-    <h3>Click on "Confirm" to delete this diary </h3>
+    <h3>Click on <span>"Confirm"</span> to delete this diary </h3>
     <button id = ${CONFIRM_DELETION_BUTTON_ID}>Confirm</button>
   `;
 }

@@ -1,9 +1,9 @@
 export function createFooterElements() {
   const footerElements = String.raw`
     
+    <h3>My Diary application <span>By Amer Barnawi</span></h3>
     <br>
-    <hr>
-    <h1>Footer</h1>
+    <p>Full-stack application</p>
   `;
 
   return footerElements;

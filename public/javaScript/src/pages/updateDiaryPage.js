@@ -12,6 +12,7 @@ import {
 } from "../controller/requestController.js";
 import { createUpdateDiaryElements } from "../views/updateDiaryView.js";
 import { initDiaryPage } from "./diaryPage.js";
+import { initSearchPage } from "./searchPage.js";
 
 export function initUpdateDiaryPage(diaryDetails) {
   const { title, body, _id } = diaryDetails;
@@ -43,6 +44,8 @@ export function initUpdateDiaryPage(diaryDetails) {
 
     const myDiary = await getDiaryById(url);
 
-    initDiaryPage(myDiary);
+    if (myDiary) {
+      initDiaryPage(myDiary);
+    }
   });
 }

@@ -1,0 +1,326 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-container {
+  max-width: 100%;
+  height: auto;
+}
+
+#footer {
+  bottom: 0px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#footer span {
+  color: yellow;
+  font-family: cursive;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  font-size: 22px;
+  font-family: Cursive;
+}
+
+#header,
+#footer {
+  width: 100%;
+  background-color: white;
+  height: 90px;
+  background-image: linear-gradient(
+    to right,
+    rgb(172, 7, 90),
+    rgb(123, 3, 163)
+  );
+  color: white;
+  text-align: center;
+}
+
+#header #search-page-button,
+#header #welcome-page-button {
+  font-size: 18px;
+  padding: 5px;
+  width: 120px;
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  margin-top: 30px;
+  background: none;
+}
+#header #search-page-button:hover,
+#header #welcome-page-button:hover {
+  color: white;
+  background-color: black;
+  transition: background-color 0.5s;
+  border: none;
+}
+
+#user-interface {
+  width: 80%;
+  position: relative;
+  margin: 20px auto;
+  background-color: white;
+  height: auto;
+}
+
+.welcome-buttons-container {
+  padding: 40px;
+  height: fit-content;
+  width: 50%;
+  background-image: linear-gradient(to right, rgb(78, 4, 109), rgb(25, 3, 81));
+  color: white;
+  text-align: center;
+  margin: 60px auto;
+  border-top-right-radius: 20%;
+  border-bottom-left-radius: 20%;
+  box-shadow: rgba(0, 0, 0, 0.35) 30px 30px 8px;
+}
+
+.welcome-buttons-container button {
+  margin-top: 60px;
+  margin-left: 10px;
+  width: 200px;
+  height: 60px;
+  border: none;
+  background-color: rgb(240, 236, 239);
+  font-size: 20px;
+}
+
+.welcome-buttons-container button:hover {
+  background-color: rgb(165, 4, 127);
+  transition: background-color 1s;
+  color: white;
+  box-shadow: 5px 5px 5px white;
+}
+
+#user-interface h1,
+form,
+button {
+  margin-bottom: 20px;
+}
+
+.heading {
+  max-width: fit-content;
+  padding-bottom: 10px;
+  color: rgb(84, 7, 167);
+  border-bottom: 1px solid rgb(165, 4, 127);
+}
+
+#user-interface form {
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#create-title,
+#update-title {
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 50%;
+  margin: auto;
+  font-size: 20px;
+}
+
+#create-body,
+#update-body {
+  border: 1px solid gray;
+  max-width: 100%;
+  height: 60%;
+  margin: 20px auto;
+  font-size: 18px;
+  padding: 20px;
+}
+
+.create-diary-buttons-div,
+.update-buttons-div {
+  display: flex;
+  justify-content: center;
+}
+
+#submit-new-diary-button,
+#return-button,
+#update-diary-button,
+#return-to-diary-button,
+#return-to-search-button {
+  width: 200px;
+  height: 60px;
+  color: white;
+  background-color: rgb(61, 5, 114);
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+#submit-new-diary-button:hover,
+#return-button:hover,
+#update-diary-button:hover,
+#return-to-diary-button:hover,
+#return-to-search-button:hover {
+  background-color: rgb(165, 4, 127);
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+#create-new-diary-message,
+#update-diary-message {
+  text-align: center;
+  width: 60%;
+  height: 60px;
+  margin: auto;
+  margin-bottom: 30px;
+  color: black;
+  padding: 10px;
+}
+
+/* Search page: */
+
+.search-container {
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(219, 216, 216);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 3px gray;
+  margin-top: 30px;
+}
+
+#search-form {
+  display: flex;
+}
+
+#search-form form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+}
+
+#search-form select {
+  width: 60px;
+  font-size: 18px;
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#search-by-date-button,
+#search-by-title-button,
+#delete-button,
+#update-button {
+  font-size: 18px;
+  padding: 5px;
+  width: 80px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+}
+
+#search-by-date-button:hover,
+#search-by-title-button:hover,
+#delete-button:hover,
+#update-button:hover {
+  color: white;
+  background-color: black;
+  transition: background-color 0.5s;
+}
+
+#search-input {
+  font-size: 18px;
+  width: 200px;
+  height: 30px;
+}
+
+#search-result-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-content: center;
+  margin: 20px auto;
+  height: 400px;
+  overflow: scroll;
+}
+
+#search-result-div h2 {
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+.result-card {
+  margin: 10px;
+  padding: 10px;
+  width: 30%;
+  height: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
+
+.result-card h3 {
+  margin-bottom: 10px;
+}
+
+.result-card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transform: scale(1.05);
+}
+
+/* Diary page */
+
+#delete-button,
+#update-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#delete-update-message {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#delete-update-message h3 span {
+  color: red;
+}
+
+#confirm-deletion-button {
+  font-size: 18px;
+  padding: 5px;
+  width: 80px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  margin-left: 20px;
+}
+
+#confirm-deletion-button:hover {
+  color: white;
+  background-color: rgb(180, 6, 6);
+  transition: background-color 0.5s;
+}
+
+#diary-body {
+  text-align: justify;
+  font-size: 18px;
+  max-width: 100%;
+  white-space: pre-line;
+  white-space: pre-wrap;
+}

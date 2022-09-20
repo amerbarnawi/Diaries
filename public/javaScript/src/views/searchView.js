@@ -14,30 +14,28 @@ export function createSearchPageElements() {
   const searchElements = String.raw`
     
         <h2>Search for your diary:</h2>
-        <br>
-        <form>
-            <p>Choose date:</p>
-            <label>Year:</label>
-            <select name="year" id= ${YEAR_SELECT_ID}>
-                <option value="" selected disabled hidden>Year</option>
-            </select>
-            <label>Month:</label>
-            <select name="month" id=${MONTH_SELECT_ID}>
-                <option value = "" selected disabled hidden>Month</option>
-            </select>
-            <label>Day:</label>
-            <select name="day" id= ${DAY_SELECT_ID}>
-                <option value = "" selected disabled hidden>Day</option>
-            </select>
-        </form>
-            <button id = ${SEARCH_BY_DATE_BUTTON_ID}>Search</button>
 
-        <br>
+      <div class="search-container">
+          <div id="search-form">
+              <form>
+                    <select name="year" id= ${YEAR_SELECT_ID}>
+                        <option value="" selected disabled hidden>Year</option>
+                    </select>
+                    <select name="month" id=${MONTH_SELECT_ID}>
+                        <option value = "" selected disabled hidden>Month</option>
+                    </select>
+                    <select name="day" id= ${DAY_SELECT_ID}>
+                        <option value = "" selected disabled hidden>Day</option>
+                    </select> 
+              </form>
+              <button id = ${SEARCH_BY_DATE_BUTTON_ID}>Search</button>
+          </div>
 
-        <div>
+        <div class="title-search-div">
             <input id = ${SEARCH_INPUT_ID} type="text" placeholder="Diary title">
             <button ID = ${SEARCH_BY_TITLE_BUTTON_ID}>Search</button>
         </div>
+      </div>
 
         <div id = ${SEARCH_RESULT_ID}></div>
 
@@ -54,10 +52,8 @@ export function createSearchResultCard(title, date) {
   resultCardDiv.classList = RESULT_CARD_CLASS;
   resultCardDiv.innerHTML = String.raw`
 
-        <hr>
         <h3>${title}</h3>
         <p>${date}</p>
-        <hr>
     `;
   return resultCardDiv;
 }

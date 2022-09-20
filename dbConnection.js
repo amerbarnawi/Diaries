@@ -11,7 +11,6 @@ async function dbConnection(crudFunction) {
 
   try {
     await client.connect();
-    console.log("connection to database is done!");
     await crudFunction(diaryCollection);
   } catch (error) {
     console.log(error);

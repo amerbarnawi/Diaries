@@ -34,12 +34,12 @@ export async function getDiaries(url) {
     const response = await fetchData(url);
 
     if (response.message) {
-      searchResultDiv.innerHTML = String.raw`<h3>${response.message}</h3>`;
+      searchResultDiv.innerHTML = String.raw`<h2>${response.message}</h2>`;
     } else {
       renderSearchResult(response);
     }
   } catch (error) {
-    searchResultDiv.innerHTML = String.raw`<h3>${error}</h3>`;
+    searchResultDiv.innerHTML = String.raw`<h2>${error}</h2>`;
   }
 }
 
@@ -84,7 +84,12 @@ export async function getDiaryById(url) {
 
   try {
     const response = await fetchData(url);
-    return response;
+    if (response.message) {
+      message.innerHTML = String.raw`<h2>${response.message}<h2>`;
+      return;
+    } else if (response) {
+      return response;
+    }
   } catch (error) {
     message.innerHTML = String.raw`<h3>${error}</h3>`;
   }

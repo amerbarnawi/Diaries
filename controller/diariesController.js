@@ -59,7 +59,7 @@ export async function readDiary(req, res) {
       } else {
         res
           .status(404)
-          .json({ message: "Sorry, can not find diaries by this id!" });
+          .json({ message: "Sorry, can not find diary by this id!" });
       }
     }
     await dbConnection(readData);

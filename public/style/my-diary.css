@@ -32,6 +32,7 @@ button {
 }
 
 #header {
+  padding-top: 10px;
   display: flex;
   justify-content: space-between;
   padding-left: 20px;
@@ -64,11 +65,12 @@ button {
   border: 1px solid white;
   color: white;
   margin-top: 30px;
+  margin-left: 10px;
   background: none;
 }
 #header #search-page-button:hover,
 #header #welcome-page-button:hover {
-  color: white;
+  color: yellow;
   background-color: black;
   transition: background-color 0.5s;
   border: none;
@@ -98,7 +100,7 @@ button {
 .welcome-buttons-container button {
   margin-top: 60px;
   margin-left: 10px;
-  width: 200px;
+  width: 180px;
   height: 60px;
   border: none;
   background-color: rgb(240, 236, 239);
@@ -125,6 +127,7 @@ button {
   border-bottom: 1px solid rgb(165, 4, 127);
 }
 
+/* Create new diary */
 #user-interface form {
   margin: auto;
   position: relative;
@@ -184,7 +187,7 @@ button {
 #update-diary-message {
   text-align: center;
   width: 60%;
-  height: 60px;
+  height: 30px;
   margin: auto;
   margin-bottom: 30px;
   color: black;
@@ -323,4 +326,103 @@ button {
   max-width: 100%;
   white-space: pre-line;
   white-space: pre-wrap;
+}
+
+@media screen and (max-width: 600px) {
+  #header {
+    flex-direction: column;
+    height: fit-content;
+  }
+  #header h1 {
+    font-size: 30px;
+    margin-top: 10px;
+  }
+
+  .header-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  #user-interface {
+    width: 90%;
+  }
+
+  .welcome-buttons-container {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .welcome-buttons-container h1 {
+    margin-top: 20px;
+    font-size: 25px;
+  }
+
+  #create-title,
+  #update-title {
+    width: 80%;
+    margin-top: 20px;
+  }
+
+  #create-new-diary-message,
+  #update-diary-message {
+    width: 90%;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+  #search-form {
+    flex-direction: column;
+    border: 1px dashed gray;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  #search-by-date-button {
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  #search-result-div {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 95%;
+    max-height: 400px;
+    margin-bottom: 50px;
+  }
+
+  .result-card {
+    width: 90%;
+    min-height: 100px;
+  }
+
+  #diary-body {
+    width: 80%;
+    margin: auto;
+    text-align: justify;
+  }
+
+  #update-diary-message h2 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .welcome-buttons-container {
+    width: 70%;
+  }
+
+  #create-new-diary-message,
+  #update-diary-message {
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  #create-title,
+  #update-title {
+    width: 80%;
+  }
 }

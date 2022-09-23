@@ -1,7 +1,7 @@
 import express from "express";
 const viewRouter = express.Router();
 
-viewRouter.get("/index", (req, res) => {
+viewRouter.get("/", (req, res) => {
   res.render("index");
 });
 

@@ -139,8 +139,6 @@ export async function queryByDate(req, res) {
   let startDate = "";
   let endDate = "";
 
-  console.log(year, typeof month, day);
-
   if (+year === 0 && +month === 0 && +day === 0) {
     res.status(400).json({ message: "Please, choose date!" });
     return;

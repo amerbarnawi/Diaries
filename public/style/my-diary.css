@@ -275,6 +275,8 @@ button {
   height: fit-content;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
+  transition: all 0.3s linear;
+  background-color: rgb(222, 222, 233);
 }
 
 .result-card h3 {

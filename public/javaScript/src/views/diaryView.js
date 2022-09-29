@@ -9,10 +9,12 @@ import {
 
 export function createDiaryElements(diaryDetails) {
   const { title, body, date } = diaryDetails;
+  const currentDate = new Date(date);
+
   const diaryElements = String.raw`
     
         <h1 id = ${DIARY_TITLE_ID}>${title}</h1>
-        <p>${date}</p>
+        <p>${currentDate.toDateString()}</p>
         <button id = ${DELETE_BUTTON_ID}>Delete</button>
         <button id = ${UPDATE_BUTTON_ID}>Update</button>
         <div id = ${DELETE_UPDATE_MESSAGE_ID}></div>

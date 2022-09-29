@@ -50,10 +50,11 @@ export function createSearchPageElements() {
 export function createSearchResultCard(title, date) {
   const resultCardDiv = document.createElement("div");
   resultCardDiv.classList = RESULT_CARD_CLASS;
+  const currentDate = new Date(date);
   resultCardDiv.innerHTML = String.raw`
 
         <h3>${title}</h3>
-        <p>${date}</p>
+        <p>${currentDate.toDateString()}</p>
     `;
   return resultCardDiv;
 }

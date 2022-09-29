@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import dbConnection from "../dbConnection.js";
+import dbConnection from "../../dbConnection.js";
 
 // Creating diary function:
 export async function createDiary(req, res) {

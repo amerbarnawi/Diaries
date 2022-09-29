@@ -27,7 +27,7 @@ export function renderSearchResult(results) {
   searchResultDiv.innerHTML = "";
 
   results.forEach((result) => {
-    const { title, date, body, _id } = result;
+    const { title, date } = result;
 
     const resultCard = createSearchResultCard(title, date);
 

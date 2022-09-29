@@ -1,4 +1,4 @@
-import dbConnection from "../dbConnection.js";
+import dbConnection from "../../dbConnection.js";
 import { ObjectId } from "mongodb";
 
 export async function isDiaryAvailable(req, res, next) {
